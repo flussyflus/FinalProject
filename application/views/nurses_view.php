@@ -1,25 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
 	<title>nurses Page</title>
 </head>
+
 <body>
 
-<div id="container">
-	<h1>Nurses page</h1>
-	<?php
-	
-		echo "<pre>";
+	<div id="container">
+		<h1>Nurses page</h1>
+		<?php
 		
-		print_r($this->session->all_userdata());
+			echo "<pre>";
+			
+			print_r($this->session->all_userdata());
+			
+			echo "</pre>";
 		
-		echo "</pre>";
-	
-	?>
-	
-	<a href='<?php echo base_url()."main/logout"?>'>Logout</a>
-</div>
+		?>
+		
+		<a href='<?php echo base_url()."main/logout"?>'>Logout</a>
+	</div>
 
-</body>
-</html>
+

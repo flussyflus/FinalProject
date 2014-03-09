@@ -13,18 +13,16 @@ class Main extends CI_Controller {
 	
 	public function members(){
 		if($this->session->userdata('is_logged_in')){
-			//this is where i need to get the type of the session account
-			//and load which view according to type of account
 			$this->load->model('model_users');
 			$t = $this->model_users->getType($this->session->userdata('email'));
 			if($t == 'cleaner'){
-				$this->load->view('cleaners_view');
+				redirect('cleaner_Con/load_Homepage');
 			}
 			else if($t=='nurse'){
-				$this->load->view('nurses_view');
+				redirect('nurse_Con/load_Homepage');
 			}
 			else if($t=='bureau'){
-				$this->load->view('bureau_view');
+				redirect('bureau_Con/load_Homepage');
 			}
 			else{
 				redirect('main/login');
@@ -32,14 +30,14 @@ class Main extends CI_Controller {
 		}
 		else{
 			redirect('main/restricted');
-		}
+		}		
 	}
 	
 	public function restricted(){
 		$this->load->view('restricted');
 	}
 	
-	public function login_validation(){
+	public function logins_validation(){
 		
 		$this->load->library('form_validation');
 		
@@ -67,6 +65,7 @@ class Main extends CI_Controller {
 			return true;
 		}
 		else{
+			$this->load->library('form_validation');
 			$this->form_validation->set_message('validate_credentails','Incorrect username/password');
 			return false;
 		}	
