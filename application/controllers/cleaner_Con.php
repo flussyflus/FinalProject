@@ -8,4 +8,15 @@ class Cleaner_Con extends CI_Controller{
 		$this->load->view('footer');
 	}
 
+	public function load_Dirty_Beds(){
+		$this->load->model('model_cleaners');
+		$this->load->model('model_users');
+		$t = $this->model_users->getType($this->session->userdata('email'));
+		if($this->session->userdata('is_logged_in') && $t=='cleaner'){
+			$data=$this->model_cleaners->getDirtyBeds();
+			echo "$data";
+		}else{
+			redirect('/main/restricted');
+		}
+	}
 }
