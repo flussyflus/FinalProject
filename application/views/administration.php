@@ -1,5 +1,5 @@
 
-	<title>Bureau Page</title>
+	<title>administration Page</title>
 </head>
 <body style="background-color:#c0c0c0;">
 	<div class="row" style="background-color:#ee2c2c;">

@@ -16,10 +16,10 @@ class Main extends CI_Controller {
 			$this->load->model('model_users');
 			$t = $this->model_users->getType($this->session->userdata('email'));
 			if($t == 'cleaner'){
-				redirect('cleaner_Con/load_Homepage');
+				redirect('cleaners_Con/load_Homepage');
 			}
 			else if($t=='nurse'){
-				redirect('nurse_Con/load_Homepage');
+				redirect('triage_Con/load_Homepage');
 			}
 			else if($t=='bureau'){
 				redirect('bureau_Con/load_Homepage');
