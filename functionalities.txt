@@ -1,0 +1,32 @@
+-Each type of user can view their personal info,
+login and logout.
+-Different types of users so farare
+	1. administrators
+	2.administration
+	3.triage nurses
+	4.Bed cleaners
+
+
+-Bed Cleaners
+	1. can view all the dirty beds in all the wards
+	2. has functionality to update the database
+	from dirty bed to clean/vacant bed they will
+	press. This will most likely just be a button.
+
+-Triage Nurses
+	1. view clean beds by all,medcial or surgical
+	wards
+	2. button/functionality to admit a patient
+	to a bed/ward
+	3. view occupied beds/dirty beds.
+	
+
+-administrator
+	1.view user profiles(not sure if should be able to edit)
+	2.view logs of what occured today
+	3.logs table to be created
+
+-administration
+	1. view all of today's supposed discharges
+	2.functionality to update database when 
+	a discharge occurs.
