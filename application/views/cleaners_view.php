@@ -9,9 +9,9 @@
 	</div>
 	
 	<div class="row">
-		<div class="col-md-3 col-md-offset-4" style="background-color:;">
+		<div class="col-md-3 col-md-offset-4"">
 			<ul class="nav nav-pills">
-				<li ><a href="#profileTab" data-toggle="tab">My Profile</a></li>
+				<li><a href="#profileTab" data-toggle="tab">My Profile</a></li>
 				<li class="active"><a href="#dirtyBedsData" data-toggle="tab">Dirty beds</a></li>				
 				<li><a href='<?php echo base_url()."main/logout"?>'>Logout</a></li>
 			</ul>

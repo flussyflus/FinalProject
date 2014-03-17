@@ -100,4 +100,19 @@ class Beds_Con extends CI_Controller{
 			}
 		}
 		
+		
+		public function cleaned_Bed(){
+			$this->load->model('model_beds');
+			$this->load->model('model_users');
+			$t = $this->model_users->getType($this->session->userdata('email'));
+			if($this->session->userdata('is_logged_in')){
+				$u = $this->input->post('bedID');
+				$data = $this->model_beds->cleanBedsUpdate($u);
+				echo "$data";
+			}else{
+				redirect('/main/restricted/');
+			}
+		}
+	
+		
 }

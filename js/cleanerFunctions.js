@@ -16,12 +16,12 @@
 			$("#mainInfo").html("");
 		});
 		$("#dirtyBedsButton").click(function(){
-			var content="";
+			var content="";$("#mainInfo").html("");
 			$.get("/finalproject/beds_Con/load_Dirty_Beds",function(data){
 				var i;
 				content = "<div class='row'></div<div class='pre-scrollable tblHeight'><table id='mytable' class='table table-striped table-bordered'><thead><tr><th>Bed</th><th>Room</th><th>Ward</th><th>Availability</th></tr></thead><tbody>";
 				for (i = 0; i < data.length; i++) {
-					content += '<tr><td>' + data[i].bedID + '</td>' + '<td>' + data[i].roomID + '</td>'+'<td>'+data[i].wardID+'</td>' + '<td>' + data[i].availability + '</td></tr>';
+					content += '<tr><td>' + data[i].bedID + '</td>' + '<td>' + data[i].roomID + '</td>'+'<td>'+data[i].wardID+'</td>' + '<td>' + data[i].availability + '</td><td><button id="bedCleaned" name="'+data[i].bedID+'">Bed '+data[i].bedID+' has been cleaned</button></tr>';
 				}
 				$("#mainInfo").html(content);
 			},"json");
@@ -40,7 +40,7 @@
 		});
 		
 		$("#vacantBedsButton").click(function(){
-			var content="";
+			var content="";$("#mainInfo").html("");
 			$.get("/finalproject/beds_Con/load_Vacant_Beds",function(data){
 				var i;
 				content = "<div class='row'></div<div class='pre-scrollable tblHeight'><table id='mytable' class='table table-striped table-bordered'><thead><tr><th>Bed</th><th>Room</th><th>Ward</th><th>Availability</th></tr></thead><tbody>";
@@ -52,7 +52,7 @@
 		});
 		
 		$("#dirtyMedicalBeds").click(function(){
-				var content=""
+				var content="";$("#mainInfo").html("");
 				$.get("/finalproject/beds_Con/find_Med_Wards",function(data){
 				var i;
 				content = "<div class='row'></div<div class='pre-scrollable tblHeight'><table id='mytable' class='table table-striped table-bordered'><thead><tr><th>Bed</th><th>Room</th><th>Ward</th><th>Availability</th></tr></thead><tbody>";
@@ -70,7 +70,7 @@
 		});
 		
 		$("#occupiedMedicalBeds").click(function(){
-				var content=""
+				var content="";$("#mainInfo").html("");
 				$.get("/finalproject/beds_Con/find_Med_Wards",function(data){
 				var i;
 				content = "<div class='row'></div<div class='pre-scrollable tblHeight'><table id='mytable' class='table table-striped table-bordered'><thead><tr><th>Bed</th><th>Room</th><th>Ward</th><th>Availability</th></tr></thead><tbody>";
@@ -88,7 +88,7 @@
 		});
 		
 		$("#vacantMedicalBeds").click(function(){
-				var content=""
+				var content="";$("#mainInfo").html("");
 				$.get("/finalproject/beds_Con/find_Med_Wards",function(data){
 				var i;
 				content = "<div class='row'></div<div class='pre-scrollable tblHeight'><table id='mytable' class='table table-striped table-bordered'><thead><tr><th>Bed</th><th>Room</th><th>Ward</th><th>Availability</th></tr></thead><tbody>";
@@ -106,7 +106,7 @@
 		});
 		
 		$("#dirtySurgicalBeds").click(function(){
-			var content="";
+			var content="";$("#mainInfo").html("");
 			$.get("/finalproject/beds_Con/find_Surg_Wards",function(data){
 				var i;
 				content = "<div class='row'></div<div class='pre-scrollable tblHeight'><table id='mytable' class='table table-striped table-bordered'><thead><tr><th>Bed</th><th>Room</th><th>Ward</th><th>Availability</th></tr></thead><tbody>";
@@ -124,7 +124,7 @@
 		});
 		
 		$("#occupiedSurgicalBeds").click(function(){
-			var content="";
+			var content="";$("#mainInfo").html("");
 			$.get("/finalproject/beds_Con/find_Surg_Wards",function(data){
 				var i;
 				content = "<div class='row'></div<div class='pre-scrollable tblHeight'><table id='mytable' class='table table-striped table-bordered'><thead><tr><th>Bed</th><th>Room</th><th>Ward</th><th>Availability</th></tr></thead><tbody>";
@@ -142,16 +142,17 @@
 		});
 		
 		$("#vacantSurgicalBeds").click(function(){
-			var content="";
+			var content="";$("#mainInfo").html("");
 			$.get("/finalproject/beds_Con/find_Surg_Wards",function(data){
 				var i;
-				content = "<div class='row'></div<div class='pre-scrollable tblHeight'><table id='mytable' class='table table-striped table-bordered'><thead><tr><th>Bed</th><th>Room</th><th>Ward</th><th>Availability</th></tr></thead><tbody>";
+				content = "<div class='row'></div<div class='col-lg-10 pre-scrollable'><table id='mytable' class='table table-striped table-bordered col-md-10'><thead><tr><th>Bed</th><th>Room</th><th>Ward</th><th>Availability</th></tr></thead><tbody>";
 				for(i=0;i<data.length;i++){
 					$.get("/finalproject/beds_Con/find_Ward_Vacant_Beds",{wardID:data[i].wardID},function(data2){
 						var j;
 						for (j = 0; j < data2.length; j++) {
 							content += '<tr><td>' + data2[j].bedID + '</td>' + '<td>' + data2[j].roomID + '</td>'+'<td>'+data2[j].wardID+'</td>' + '<td>' + data2[j].availability + '</td></tr>';
 						}
+						content+="</div>";
 						$("#mainInfo").html(content);
 					},"json");
 				}
@@ -166,13 +167,19 @@
 			$("#mainInfo").html(content);
 			$.get("/finalproject/profile_Con/load_profile",function(data){
 				var i;
-				content="";
 				for(i=0;i<data.length;i++){
 					content+="thisisJon"
 				}
+				$("#mainInfo").html(content);
 			},"json");
 		});
 		
+		//button functionality to update the database
+		//when a bed is cleaned
+		$(document).on('click','#bedCleaned',function(){
+			bedNum = $(this).attr("name");
+			$.post("/finalproject/beds_Con/cleaned_Bed",{bedID:bedNum});
+		});
 		
 			
 	});

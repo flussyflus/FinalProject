@@ -84,6 +84,17 @@ class Model_beds extends CI_Model{
 			return false;
 		}
 	}
-
-
+	
+	public function cleanBedsUpdate($u){
+		$this->db->set('availability','"vacant"',FALSE);
+		$this->db->where('bedID',$u);
+		$this->db->update('beds');
+		if($this->db->affected_rows() ==1){
+                return "<p>Updated Sucessfully</p>";
+        } else {
+                return "<p>Error Updating</p>";
+            }
+	}
+	
+	
 }
