@@ -24,6 +24,9 @@ class Main extends CI_Controller {
 			else if($t=='bureau'){
 				redirect('bureau_Con/load_Homepage');
 			}
+			else if($t=='administrator'){
+				redirect('admin_Con/load_Homepage');
+			}
 			else{
 				redirect('main/login');
 			}
@@ -40,6 +43,7 @@ class Main extends CI_Controller {
 	public function logins_validation(){
 		
 		$this->load->library('form_validation');
+		$this->load->model('model_users');
 		
 		$this->form_validation->set_rules('email','Email','required|trim|xss_clean|callback_validate_credentials');
 		$this->form_validation->set_rules('password','Password','required|md5|trim');
@@ -51,6 +55,8 @@ class Main extends CI_Controller {
 					);
 		
 			$this->session->set_userdata($data);
+			$t = $this->model_users->getType($this->session->userdata('email'));
+			$this->model_users->setLog($this->session->userdata('email'),$t,getdate(),'login');
 			redirect('main/members');
 		}
 		else{
@@ -72,6 +78,9 @@ class Main extends CI_Controller {
 	}
 	
 	public function logout(){
+		$this->load->model('model_users');
+		$t = $this->model_users->getType($this->session->userdata('email'));
+		$this->model_users->setLog($this->session->userdata('email'),$t,getdate(),'logout');
 		$this->session->sess_destroy();
 		redirect('main/login');
 	}

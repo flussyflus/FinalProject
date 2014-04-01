@@ -108,6 +108,8 @@ class Beds_Con extends CI_Controller{
 			if($this->session->userdata('is_logged_in')){
 				$u = $this->input->post('bedID');
 				$data = $this->model_beds->cleanBedsUpdate($u);
+				$this->model_users->setLog($this->session->userdata('email'),$t,getDate(),'Bed '.$u.' Cleaned');
+            
 				echo "$data";
 			}else{
 				redirect('/main/restricted/');

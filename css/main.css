@@ -1,3 +1,7 @@
 .nav-pills>li.active>a:focus,.nav-pills>li.active>a,.nav-pills>li.active>a:hover{
 	background-color:#ee2c2c;
 }
+.boxStuff{
+	background-color:white;
+	box-shadow:0 0 30px #000;
+}
