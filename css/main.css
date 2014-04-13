@@ -1,7 +1,29 @@
+.nav-pills>li>a{
+	color:black;
+}
+.nav-pills>li.active>a{
+	color:white;
+}
+
 .nav-pills>li.active>a:focus,.nav-pills>li.active>a,.nav-pills>li.active>a:hover{
 	background-color:#ee2c2c;
 }
 .boxStuff{
 	background-color:white;
-	box-shadow:0 0 30px #000;
+}
+
+.nav-tabs>li>a{
+	color:black;
+}
+.nav-tabs > li.active > a,
+        .nav-tabs > li.active > a:hover,
+        .nav-tabs > li.active > a:focus {
+          color: #ee2c2c;
+          cursor: default;
+          background-color: #ffffff;
+          border: 1px solid #dddddd;
+}
+
+.jumbotron{
+	height:500px;
 }

@@ -21,9 +21,6 @@ class Main extends CI_Controller {
 			else if($t=='nurse'){
 				redirect('triage_Con/load_Homepage');
 			}
-			else if($t=='bureau'){
-				redirect('bureau_Con/load_Homepage');
-			}
 			else if($t=='administrator'){
 				redirect('admin_Con/load_Homepage');
 			}
