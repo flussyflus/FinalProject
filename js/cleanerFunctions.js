@@ -134,18 +134,6 @@
 		},"json");
 		
 	});
-		
-	//this needs to be fixed up
-	$(document).on('click','#profileButton',function(){
-		//brings up profile data for this particular user
-		var content ="<h2>Profile Information</h2><hr>";
-		$("#headInfo").html(content);
-		$("#midInfo").html("");
-		$("#mainInfo").html("");
-		$.get("/finalproject/profile_Con/getMyProfile",function(data){
-			content = "<div class='row'><label>UserID: </label> "+data[0].id+"<br><label>Email: </label> "+data[0].email+"<br><label>First name: </label> "+data[0].firstname+"<br><label>Last Name: </label> "+data[0].lastname+"<br><label>User Type: </label> "+data[0].type+"<br><label>Address: </label> "+data[0].address+"<br><label>Date of Birth: </label> "+data[0].dob+"<br><label>gender: </label> "+data[0].gender+"<br><label>Date Employed: </label> "+data[0].date_employed;
-			content+='</div><br><div class="row col-md-6" style="float:right;"><button id="editUser"class="btn btn-primary btn-danger">Edit</button>'
-			$("#mainInfo").html(content);
-		},"json");
-	});
 }(this));
+
+	

@@ -1,5 +1,5 @@
 
-	<title>Nurses Page</title>
+	<title>Administration Page</title>
 </head>
 <body style="background-color:#c0c0c0;">
 	
@@ -13,7 +13,6 @@
 			<div class="container-fluid">
 				<ul class="nav navbar-nav navbar navbar-left">
 						<li><a href="" id="profileButton" data-toggle="tab">My Profile</a></li>
-						<li><a href="" id="bedsData" data-toggle="tab">Beds</a></li>				
 						<li><a href="" id="admittanceData" data-toggle="tab">Admittances</a></li>				
 						<li><a href="" id="dischargeData" data-toggle="tab">Discharges</a></li>				
 				</ul>
@@ -30,25 +29,25 @@
 		<div class="jumbotron col-md-2" id="menuItems" style="padding:0;">					
 		</div>
 		
-		<div class="jumbotron col-md-9 col-md-offset-1" style="padding-top:10px;">
-			<div class="row" id="headInfo" style="text-align:center;"></div>
+		<div class="jumbotron col-md-9 col-md-offset-1" style="padding-top:10px;text-align:center;">
+			<div class="row" id="headInfo"></div>
 			<div class="row" id="midInfo"></div>
 			<div class="row" id="mainInfo"></div>
 		</div>
 	</div>
 	
 	<div class="modal fade" id="admitPatientModal">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header" id="admitModalHeader"></div>
-					<div class="modal-body" id="admitModalBody"></div>
-				</div>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" id="admitModalHeader"></div>
+				<div class="modal-body" id="admitModalBody"></div>
 			</div>
 		</div>
+	</div>
+	
 		<script src="<?php echo base_url();?>js/vendor/jquery-1.10.1.min.js"></script>
 		<script src="<?php echo base_url();?>js/vendor/bootstrap.min.js"></script>
-		<script src="<?php echo base_url();?>js/bedsFunctions.js"></script>
-		<script src="<?php echo base_url();?>js/profileFunctions.js"></script>
 		<script src="<?php echo base_url();?>js/admitFunctions.js"></script>
 		<script src="<?php echo base_url();?>js/dischargeFunctions.js"></script>
+		<script src="<?php echo base_url();?>js/profileFunctions.js"></script>
 	</body>

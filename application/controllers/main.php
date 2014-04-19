@@ -24,6 +24,9 @@ class Main extends CI_Controller {
 			else if($t=='administrator'){
 				redirect('admin_Con/load_Homepage');
 			}
+			else if($t=='administration'){
+				redirect('administration_Con/load_Homepage');
+			}
 			else{
 				redirect('main/login');
 			}

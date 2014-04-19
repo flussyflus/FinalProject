@@ -179,10 +179,13 @@ class Admin_Con extends CI_Controller{
 			$j = $this->input->post('date_employed');
 			$k = $this->input->post('dob');
 			$l = $this->input->post('gender');
-			$s = $this->model_admin->addUserRecord($d,$e,$f,$g,$h,$i,$j,$k,$l);
+			$s = $this->model_admin->addUserRecord($d,$e,$f);
             echo "$s";
         } else {
             redirect('/main/restricted');
         }
 	}
+	
+	
+	
 }

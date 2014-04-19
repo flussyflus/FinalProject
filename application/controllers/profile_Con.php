@@ -24,5 +24,9 @@ class Profile_Con extends CI_Controller{
 			redirect('/main/restricted');
 		}
 	}
+	
+	public function editUserProfile(){
+		
+	}
 
 }

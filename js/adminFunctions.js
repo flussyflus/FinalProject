@@ -3,7 +3,7 @@
 		//loads the menu for the admin  logs page
 		var content='<ul class="nav nav-pills nav-stacked"><li class="active"><a class="btn btn-lg" id="" data-toggle="tab">Search Logs</a></li></ul>';
 		$("#menuItems").html(content);
-		$("#headInfo").html("");
+		$("#headInfo").html("<h2>Search Logs</h2><hr>");
 		
 		content="<div class='col-xs-5'><select id='selectDates' class='form-control IDmenu'><option selected ='selected' value ='all'>Choose Date to filter results</option></select></div>";
 		content+="<div class='col-xs-5'><select id='selectUsers' class='form-control IDmenu'><option selected ='selected' value ='all'>Choose User to filter results</option></select></div><div class='col-xs-2'><button class='btn btn-primary btn-danger' id='getLogs'>GetLogs</button></div>";
@@ -30,7 +30,7 @@
 		//loads the menu for the admin  logs page
 		var content='<ul class="nav nav-pills nav-stacked"><li class="active"><a class="btn btn-lg" id="" data-toggle="tab">Search Logs</a></li></ul>';
 		$("#menuItems").html(content);
-		$("#headInfo").html("");
+		$("#headInfo").html("<h2>Search Logs</h2><hr>");
 		
 		content="<div class='col-xs-5'><select id='selectDates' class='form-control IDmenu'><option selected ='selected' value ='all'>Choose Date to filter results</option></select></div>";
 		content+="<div class='col-xs-5'><select id='selectUsers' class='form-control IDmenu'><option selected ='selected' value ='all'>Choose User to filter results</option></select></div><div class='col-xs-2'><button class='btn btn-primary btn-danger' id='getLogs'>GetLogs</button></div>";
@@ -74,9 +74,10 @@
 	
 	$(document).on('click','#usersData',function(){
 		//loads the users menu to the screen
-		var content='<ul class="nav nav-pills nav-stacked"><li><a class="btn btn-lg" id="viewUsers" data-toggle="tab">view Users</a></li><li><a class="btn btn-lg" id="addUser" data-toggle="modal" data-target="#addUserModal">Add User</a></li></ul>';
+		var content='<ul class="nav nav-pills nav-stacked"><li><a class="btn btn-lg" id="viewUsers" data-toggle="tab">view Users</a></li><li><a class="btn btn-lg" id="addUser" data-toggle="tab">Add User</a></li></ul>';
 		$("#menuItems").html(content);
 		$("#midInfo").html("");
+		$("#headInfo").html("");
 		$("#mainInfo").html("");
 	});
 	
@@ -86,6 +87,7 @@
 		content+="<div class='col-md-5'><select id='selectUsers' class='form-control IDmenu'><option selected ='selected' value ='all'>Choose User to filter results</option></select></div>";
 		content+="<div class='col-md-2'><button class='btn btn-primary btn-danger' id='getUsers'>GetUsers</button></div>"
 		$("#midInfo").html(content);
+		$("#headInfo").html("<h2>View Users</h2><hr>");
 		var c="";
 		$.get("/finalproject/admin_Con/getUniqueTypes",function(data){
 		for(i=0;i<data.length;i++){
@@ -122,31 +124,8 @@
 			$("#tableBody").html(c);
 		},"json");	
 	});
+		
 	
-	$(document).on('click','#getBeds',function(){
-		//loads the beds table to the screen
-		var sel = document.getElementById('selectBeds');
-		var selected = sel.options[sel.selectedIndex];
-		var param1 = selected.getAttribute('value');
-		sel = document.getElementById('selectRooms');
-		selected = sel.options[sel.selectedIndex];
-		var param2 = selected.getAttribute('value');
-		sel = document.getElementById('selectWards');
-		selected = sel.options[sel.selectedIndex];
-		var param3 = selected.getAttribute('value');
-		sel = document.getElementById('selectAvail');
-		selected = sel.options[sel.selectedIndex];
-		var param4 = selected.getAttribute('value');
-		var content ="<br><div class='pre-scrollable'><table id='mytable' class='table table-striped table-bordered'><thead><tr><th>Bed</th><th>Room</th><th>Ward</th><th>Availability</th></tr><tr></tr></thead><tbody id='tableBody'></tbody></table></div>";
-		$("#mainInfo").html(content);
-		var c="";
-		$.get("/finalproject/admin_Con/getBedsTable",{bedID:param1,roomID:param2,wardID:param3,availability:param4},function(data){
-			for(i=0;i<data.length;i++){
-				c+='<tr><td>' + data[i].bedID + '</td>' + '<td>' + data[i].roomID + '</td>'+'<td>'+data[i].wardID+'</td>' + '<td>' + data[i].availability + '</td><td class="col-md-1"><button class="btn btn-primary btn-danger" id="deleteBed" name="'+data[i].bedID+'">Delete Bed</button></td></tr>';
-			}
-			$("#tableBody").html(c);
-		},"json");
-	});
 	
 	$("#addUserForm").submit(function(){
 		//submits form for adding and adds the user to the database
@@ -198,94 +177,24 @@
 	});
 	
 	
-	$(document).on('click','#bedsData',function(){
-		//loads beds nav pills to screen
-		var content='<ul class="nav nav-pills nav-stacked"><li><a class="btn btn-lg" id="viewBeds" data-toggle="tab">View Beds</a></li><li><a class="btn btn-lg" id="addBed" data-toggle="tab">Add Bed</a></li></ul>';
-		$("#menuItems").html(content);
-		$("#midInfo").html("");
-		$("#mainInfo").html("");
-	});
 	
-	$(document).on('click','#viewBeds',function(){
-		//loads beds sub menu to screen
-		$("#midInfo").html("");
-		var content ="<div class='col-xs-2'><select id='selectBeds' class='form-control'><option selected ='selected' value ='all'>bedID</option></select></div>";
-		content+="<div class='col-xs-2'><select id='selectRooms' class='form-control'><option selected ='selected' value ='all'>roomID</option></select></div>";
-		content+="<div class='col-xs-2'><select id='selectWards' class='form-control'><option selected ='selected' value ='all'>wardID</option></select></div>";
-		content+="<div class='col-xs-3'><select id='selectAvail' class='form-control'><option selected ='selected' value ='all'>Availability</option></select></div>";
-		content+="<div class='col-md-2'><button class='btn btn-primary btn-danger' id='getBeds'>Get Beds</button></div>";
-		$("#midInfo").html(content);
-		$.get("/finalproject/admin_Con/getUniqueBeds",function(data){
-			var c="";	
-			for(i=0;i<data.length;i++){
-				c+='<option id="'+data[i].bedID+'" value="'+data[i].bedID+'">'+data[i].bedID+'</option>';
-			}		
-			$("#selectBeds").append(c);
-		},"json");
-		var d="";
-		$.get("/finalproject/admin_Con/getUniqueRooms",function(data){
-			for(i=0;i<data.length;i++){
-				d+='<option id="'+data[i].roomID+'" value="'+data[i].roomID+'">'+data[i].roomID+'</option>';
-			}		
-			$("#selectRooms").append(d);		
-		},"json");
-		
-		
-		var e="";
-		$.get("/finalproject/admin_Con/getUniqueWards",function(data){
-		for(i=0;i<data.length;i++){
-			e+='<option id="'+data[i].wardID+'" value="'+data[i].wardID+'">'+data[i].wardID+'</option>';
-		}		
-		$("#selectWards").append(e);
-		},"json");
-		
-		
-		var f="";
-		$.get("/finalproject/admin_Con/getUniqueAvailabilities",function(data){
-		for(i=0;i<data.length;i++){
-			f+='<option id="'+data[i].availability+'" value="'+data[i].availability+'">'+data[i].availability+'</option>';
-		}		
-		$("#selectAvail").append(f);
-		},"json");
+	
+	$(document).on('click','#addUser',function(){
+		var content = "<h2> Add a User</h2>"
+		$("#headInfo").html(content);
+		var c="<?php $formAttributes = array('class'=>'form-horizontal');echo form_open('main/logins_validation',$formAttributes);echo validation_errors();?>";
+		c+='<div class="form-group"><label for="email" class="col-sm-2 control-label">E-mail</label><div class="col-sm-10"><?php $fieldAttributes=array("class"=>"form-control","nam"=>"email");echo form_input($fieldAttributes);?></div></div>';
+		$("#mainInfo").html(c);
 	});
 	
 	
-	$(document).on('click','#deleteBed',function(){
-		//delete a bed
-		bedID = $(this).attr("name");
-		$.post("/finalproject/admin_Con/deleteBed",{bedID:bedID});
-		var sel = document.getElementById('selectBeds');
-		var selected = sel.options[sel.selectedIndex];
-		var param1 = selected.getAttribute('value');
-		sel = document.getElementById('selectRooms');
-		selected = sel.options[sel.selectedIndex];
-		var param2 = selected.getAttribute('value');
-		sel = document.getElementById('selectWards');
-		selected = sel.options[sel.selectedIndex];
-		var param3 = selected.getAttribute('value');
-		sel = document.getElementById('selectAvail');
-		selected = sel.options[sel.selectedIndex];
-		var param4 = selected.getAttribute('value');
-		var content ="<div class='pre-scrollable'><table id='mytable' class='table table-striped table-bordered'><thead><tr><th>Bed</th><th>Room</th><th>Ward</th><th>Availability</th></tr><tr></tr></thead><tbody id='tableBody'></tbody></table></div>";
-		$("#mainInfo").html(content);
-		var c="";
-		$.get("/finalproject/admin_Con/getBedsTable",{bedID:param1,roomID:param2,wardID:param3,availability:param4},function(data){
-			for(i=0;i<data.length;i++){
-				c+='<tr><td>' + data[i].bedID + '</td>' + '<td>' + data[i].roomID + '</td>'+'<td>'+data[i].wardID+'</td>' + '<td>' + data[i].availability + '</td><td class="col-md-1"><button class="btn btn-primary btn-danger" id="deleteBed" name="'+data[i].bedID+'">Delete Bed</button></td></tr>';
-			}
-			$("#tableBody").html(c);
-		},"json");
-	});
+	
+	
+	
+	
+	
 	
 	//view admittance stuffs
 	//view discharges stuff
 	//beds stuff, change any bed to it next successor availability
-	
-	
-	//for the documentation
-		//write a short essay on why administrato is important and why he is needed
-		//reasons for the tables in the database
-		//how the administrator page works
-		//the set up on our cons,models and views
-	
 }(this));

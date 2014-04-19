@@ -11,8 +11,8 @@
 		<nav class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a id="profileButton" data-toggle="tab">My Profile</a></li>
-					<li class="active"><a id="dirtyBedsData" data-toggle="tab">Dirty beds</a></li>				
+					<li><a href="" id="profileButton" data-toggle="tab">My Profile</a></li>
+					<li class="active"><a href="" id="dirtyBedsData" data-toggle="tab">Dirty beds</a></li>				
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="navar-right"><a href='<?php echo base_url()."main/logout"?>'>Logout</a></li>
@@ -32,23 +32,8 @@
 			<div class="row" id="mainInfo"></div>
 		</div>
 	</div>
-	<!--<div class="container" style="background-color:green;">			
-		<div class="jumbotron" style="background-color:white;">
-			<!--		<ul class="nav nav- nav-justified">
-						<li><a id="profileButton" data-toggle="tab">My Profile</a></li>
-						<li class="active"><a id="dirtyBedsData" data-toggle="tab">Dirty beds</a></li>				
-						<li><a href='<?php echo base_url()."main/logout"?>'>Logout</a></li>
-					</ul>
-			<div class="row" id="headInfo">
-			</div>
-			<div class="row" id="midInfo">
-			</div>
-			<div class="row container col-lg-offset-1" id="mainInfo">	
-			</div>			
-		</div>
-	</div>-->
-	
 		<script src="<?php echo base_url();?>js/vendor/jquery-1.10.1.min.js"></script>
 		<script src="<?php echo base_url();?>js/vendor/bootstrap.min.js"></script>
 		<script src="<?php echo base_url();?>js/cleanerFunctions.js"></script>
+		<script src="<?php echo base_url();?>js/profileFunctions.js"></script>
 	</body>
