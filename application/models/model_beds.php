@@ -96,5 +96,20 @@ class Model_beds extends CI_Model{
             }
 	}
 	
+	public function addBed($a,$b){
+		$data = array(
+			'roomID'=>$a,
+			'wardID'=>$b,
+			'availability'=>'vacant',
+			'patientID'=>NULL
+			);
+		$this->db->insert('beds',$data); 
+		if($this->db->affected_rows() == 1){
+            return "<p>Inserted Sucessfully</p>";
+        } else {
+            return "<p>Error Inserting</p>";
+        }	
+	}
+	
 	
 }

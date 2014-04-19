@@ -116,5 +116,17 @@ class Beds_Con extends CI_Controller{
 			}
 		}
 	
-		
+	public function addBed(){
+		$this->load->model('model_beds');
+		$this->load->model('model_users');
+		$t = $this->model_users->getType($this->session->userdata('email'));
+        if ($this->session->userdata('is_logged_in')&&$t!='cleaner'&&$t!='administration'){
+			$a=$_POST["addBedRoomID"];
+			$b=$_POST["addBedWardID"];
+			$s=$this->model_beds->addBed($a,$b);
+			redirect('/main/members');
+		}else {
+            redirect('/main/restricted');
+        }
+	}
 }

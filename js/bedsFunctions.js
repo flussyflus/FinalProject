@@ -1,7 +1,7 @@
 (function(window){
 	$(document).on('click','#bedsData',function(){
 		//loads beds nav pills to screen
-		var content='<ul class="nav nav-pills nav-stacked"><li><a class="btn btn-lg" id="viewBeds" data-toggle="tab">View Beds</a></li><li><a class="btn btn-lg" id="addBed" data-toggle="tab">Add Bed</a></li></ul>';
+		var content='<ul class="nav nav-pills nav-stacked"><li><a class="btn btn-lg" id="viewBeds" data-toggle="tab">View Beds</a></li><li><a class="btn btn-lg" id="addBed" data-toggle="modal" data-target="#addBedModal">Add Bed</a></li></ul>';
 		$("#menuItems").html(content);
 		$("#headInfo").html("");
 		$("#midInfo").html("");
@@ -76,6 +76,17 @@
 		bedID = $(this).attr("name");
 		$.post("/finalproject/admin_Con/deleteBed",{bedID:bedID});
 		loadBeds();
+	});
+	
+	$(document).on('click','#addBed',function(){
+		var content='<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+		content+='<h2 class="modal-title">Add Bed</h2>';
+		$("#addBedModalHeader").html(content);
+		var content2="<form method='post' action='/finalproject/beds_Con/addBed'";
+		content2+='<div class="form-group"><label>Choose Room:</label><input type="text" class="form-control" name="addBedRoomID" placeholder="Enter Room Number" required></div>'
+		content2+='<div class="form-group"><label>Choose Ward:</label><input type="text" class="form-control" name="addBedWardID" placeholder="Enter Ward Number" required></div>'
+		content2+='<div><button class="btn btn-lg btn-primary col-md-offset-6" data-dismiss="modal">Cancel</button><button class="btn btn-lg btn-primary col-md-offset-1" type="submit" id="addBedRec">Add Bed</button></div>';
+		$("#addBedModalBody").html(content2);
 	});
 	
 	//add edit bed functionality

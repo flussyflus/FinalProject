@@ -74,7 +74,7 @@
 	
 	$(document).on('click','#usersData',function(){
 		//loads the users menu to the screen
-		var content='<ul class="nav nav-pills nav-stacked"><li><a class="btn btn-lg" id="viewUsers" data-toggle="tab">view Users</a></li><li><a class="btn btn-lg" id="addUser" data-toggle="tab">Add User</a></li></ul>';
+		var content='<ul class="nav nav-pills nav-stacked"><li><a class="btn btn-lg" id="viewUsers" data-toggle="tab">view Users</a></li><li><a class="btn btn-lg" id="addUser" data-toggle="modal" data-target="#addUserModal">Add User</a></li></ul>';
 		$("#menuItems").html(content);
 		$("#midInfo").html("");
 		$("#headInfo").html("");
@@ -127,7 +127,7 @@
 		
 	
 	
-	$("#addUserForm").submit(function(){
+	/*$("#addUserForm").submit(function(){
 		//submits form for adding and adds the user to the database
 		var email= $("#regEmail").val();
 		var password=$("#regPassword").val();
@@ -153,7 +153,7 @@
 			dob:dob,
 			gender:gender
 			});
-	});
+	});*/
 	
 	$(document).on('click','#deleteUser',function(){
 	//delete user button function - add to log table stuff
@@ -176,24 +176,13 @@
 		},"json");	
 	});
 	
-	
-	
-	
 	$(document).on('click','#addUser',function(){
-		var content = "<h2> Add a User</h2>"
-		$("#headInfo").html(content);
-		var c="<?php $formAttributes = array('class'=>'form-horizontal');echo form_open('main/logins_validation',$formAttributes);echo validation_errors();?>";
-		c+='<div class="form-group"><label for="email" class="col-sm-2 control-label">E-mail</label><div class="col-sm-10"><?php $fieldAttributes=array("class"=>"form-control","nam"=>"email");echo form_input($fieldAttributes);?></div></div>';
-		$("#mainInfo").html(c);
+		var content='<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+		content+='<h2 class="modal-title">Add User</h2>';
+		$("#addUserModalHeader").html(content);
+		var content2="<form method='post' action='/finalproject/admin_Con/addUser'";
+		content2+='<div class="form-group"><label></label><input></div>'
 	});
-	
-	
-	
-	
-	
-	
-	
-	
 	//view admittance stuffs
 	//view discharges stuff
 	//beds stuff, change any bed to it next successor availability

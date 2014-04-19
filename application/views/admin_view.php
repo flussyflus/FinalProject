@@ -100,6 +100,24 @@
 			</div>
 		</div>
 		
+		<div class="modal fade" id="addBedModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header" id="addBedModalHeader"></div>
+					<div class="modal-body" id="addBedModalBody"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="addUserModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header" id="addUserModalHeader"></div>
+					<div class="modal-body" id="addUserModalBody"></div>
+				</div>
+			</div>
+		</div>
+		
 		<script src="<?php echo base_url();?>js/vendor/jquery-1.10.1.min.js"></script>
 		<script src="<?php echo base_url();?>js/vendor/bootstrap.min.js"></script>
 		<script src="<?php echo base_url();?>js/adminFunctions.js"></script>

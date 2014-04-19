@@ -88,7 +88,7 @@ class Admittance_Con extends CI_Controller{
             $c=$_POST['admitFormPatientLastName'];
 			$g =$this->model_admittance->addPatient($a,$b,$c);
 			$s = $this->model_admittance->admitPatient($id,$a,$b,$c);
-            redirect('/finalproject/triage_Con/load_Homepage');
+            redierect('/main/members');
         } else {
             redirect('/main/restricted');
         }

@@ -165,11 +165,11 @@ class Admin_Con extends CI_Controller{
         }
 	}
 	
-	public function addUserRecord(){
+	public function addUser(){
 		$this->load->model('model_admin');
 		$this->load->model('model_users');
 		$t = $this->model_users->getType($this->session->userdata('email'));
-        if ($this->session->userdata('is_logged_in')){
+        if ($this->session->userdata('is_logged_in')&& $t!='cleaner' && $t!='administration'){
 			$d = $this->input->post('email');
 			$e = $this->input->post('password');
 			$f = $this->input->post('type');
